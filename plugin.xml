@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="btutil-plugin"
+    version="0.2.11">
+    <name>Cordova Bluetooth Utils Plugin</name>
+    <description>Bluetooth</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,android,bluetooth</keywords>
+    <issue></issue>
+
+    <js-module src="www/btutil.js" name="BTUtil">
+        <clobbers target="BTUtil" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BTUtilPlugin">
+                <param name="android-package" value="schonmann.btutil.BTUtilPlugin"/>
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/*">
+			<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+			<uses-permission android:name="android.permission.BLUETOOTH" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="application">
+        </config-file>
+		
+		<!-- SOURCE FILES! -->
+		
+        <source-file src="src/android/BTStarter.java"	target-dir="src/schonmann/btutil/" />
+        <source-file src="src/android/BTUtilPlugin.java"	target-dir="src/schonmann/btutil/" />
+		<source-file src="src/android/Callback.java"	target-dir="src/schonmann/btutil/" />
+        <source-file src="src/android/Fallback.java"	target-dir="src/schonmann/btutil/" />
+		<source-file src="src/android/ScanTask.java"	target-dir="src/schonmann/btutil/" />
+		
+    </platform>
+
+</plugin>
